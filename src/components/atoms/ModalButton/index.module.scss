@@ -1,0 +1,8 @@
+@use '../../../styles/mixins/index' as m;
+
+.button {
+  display: block;
+  padding: 1em;
+  text-align: center;
+  background-color: #fff;
+}

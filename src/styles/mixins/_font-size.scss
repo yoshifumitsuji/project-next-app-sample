@@ -1,0 +1,5 @@
+@use 'sass:math';
+
+@mixin font-size($font-size, $width) {
+  font-size: math.div($font-size, $width) * 100 + vw;
+}

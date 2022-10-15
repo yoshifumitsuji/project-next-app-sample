@@ -1,0 +1,5 @@
+@use 'sass:math';
+
+@mixin line-height($psd-size, $font-size) {
+  line-height: math.div($psd-size, $font-size);
+}

@@ -1,0 +1,13 @@
+@use '../../../styles/animations/fade-in';
+@use '../../../styles/mixins/index' as m;
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: #000;
+  opacity: 0;
+
+  &.active {
+    @include m.animation(fade-in 0.5s ease-out);
+  }
+}

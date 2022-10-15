@@ -1,0 +1,13 @@
+@use '../mixins/keyframes' as *;
+
+@include keyframes(show-ballon) {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}

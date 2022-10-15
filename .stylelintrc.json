@@ -1,0 +1,15 @@
+{
+  "plugins": ["stylelint-scss", "stylelint-order"],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended-scss",
+    "stylelint-config-recess-order",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "string-quotes": "single",
+    "keyframes-name-pattern": "[a-z]+",
+    "order/order": ["custom-properties", "declarations"]
+  },
+  "ignoreFiles": ["**/node_modules/**"]
+}

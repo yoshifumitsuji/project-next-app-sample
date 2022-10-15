@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use '../variables/breakpoints' as bp;
+
+@mixin responsive($device: 'max') {
+  @media #{map.get(bp.$breakpoints, $device)} {
+    @content;
+  }
+}

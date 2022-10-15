@@ -1,0 +1,28 @@
+@use './responsive' as *;
+@use './line-height' as *;
+@use './letter-spacing' as *;
+@use './font-size' as *;
+
+@mixin font($size, $height, $color, $weight) {
+  font-weight: $weight;
+  color: $color;
+
+  @include font-size($size, 750);
+  @include line-height($height, $size);
+  @include responsive('md') {
+    @include font-size($size * (575 / 750), 1440);
+  }
+  @include responsive('xl') {
+    font-size: $size * (575 / 750) * 1.3 + px;
+  }
+}
+
+@mixin font-ja($size, $height, $color, $weight) {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  @include font($size, $height, $color, $weight);
+}
+
+@mixin font-en($size, $height, $color, $weight) {
+  font-family: Poppins, sans-serif;
+  @include font($size, $height, $color, $weight);
+}

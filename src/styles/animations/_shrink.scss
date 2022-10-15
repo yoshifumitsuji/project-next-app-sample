@@ -1,0 +1,11 @@
+@use '../mixins/keyframes' as *;
+
+@include keyframes(shrink) {
+  0% {
+    transform: scale(4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

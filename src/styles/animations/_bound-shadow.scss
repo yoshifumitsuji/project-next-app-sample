@@ -1,0 +1,17 @@
+@use '../mixins/keyframes' as *;
+
+@include keyframes(bound-shadow) {
+  0% {
+    transform: scaleX(1.5);
+  }
+
+  40% {
+    opacity: 0.7;
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0.4;
+    transform: scaleX(0.2);
+  }
+}
