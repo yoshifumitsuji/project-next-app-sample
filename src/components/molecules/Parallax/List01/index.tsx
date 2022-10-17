@@ -11,7 +11,7 @@ type Props = {
   images: Image[]
 }
 
-export const ParallaxList = ({ images, ...props }: Props) => {
+export const List01 = ({ images, ...props }: Props) => {
   const rectRefs = useRef(images.map(() => createRef<HTMLLIElement>()))
   const itemRefs = useRef(images.map(() => createRef<HTMLLIElement>()))
 

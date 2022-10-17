@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 
-import { ParallaxList } from './index'
+import { List01 } from './index'
+
 const IMG1 =
   'https://images.unsplash.com/photo-1665873183648-649ad63e4df4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
 const IMG2 =
@@ -31,10 +32,10 @@ const IMAGES = [
 
 const images = new Array(10).fill(null).reduce((pre, _) => pre.concat(IMAGES), [])
 export default {
-  component: ParallaxList,
+  component: List01,
   args: {
     images,
   },
-} as ComponentMeta<typeof ParallaxList>
+} as ComponentMeta<typeof List01>
 
-export const Default: ComponentStoryObj<typeof ParallaxList> = {}
+export const Default: ComponentStoryObj<typeof List01> = {}
