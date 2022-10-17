@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 
-import { ReactResize } from 'src/components/molecules/ReactResize'
+import { ReactResize } from './index'
 
 export default {
   component: ReactResize,

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 
-import { ReactIntersect } from 'src/components/molecules/ReactIntersect'
+import { ReactIntersect } from './index'
 
 export default {
   component: ReactIntersect,

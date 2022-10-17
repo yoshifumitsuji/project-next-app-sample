@@ -1,6 +1,6 @@
-@use '../../../styles/mixins/index' as m;
-@use '../../../styles/animations/bound';
-@use '../../../styles/animations/bound-shadow';
+@use '../../../../styles/mixins/index' as m;
+@use '../../../../styles/animations/bound';
+@use '../../../../styles/animations/bound-shadow';
 
 .full {
   position: fixed;

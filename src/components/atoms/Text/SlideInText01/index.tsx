@@ -4,20 +4,40 @@ import { useEffect, useRef } from 'react'
 import styles from './index.module.scss'
 
 type Props = {
-  scrollTrigger: any
-  children: React.ReactNode
+  color?: string
+  backgroundColor?: string
+  slideInDuration?: number
+  slideInEase?: string
+  slideInDelay?: number
+  slideOutDuration?: number
+  slideOutEase?: string
+  slideOutDelay?: number
+  scrollTrigger?: any
+  children: string
 }
 
-export const SlideInText01 = (props: Props) => {
+export const SlideInText01 = ({
+  color = '#fff',
+  backgroundColor = '#000',
+  slideInDuration = 0.3,
+  slideInEase = 'power1.inOut',
+  slideInDelay = 0,
+  slideOutDuration = 0.3,
+  slideOutEase = 'power1.inOut',
+  slideOutDelay = 0,
+  scrollTrigger = null,
+  ...props
+}: Props) => {
   const word = useRef<HTMLDivElement>(null)
   const rect = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     gsap
-      .timeline()
+      .timeline({ scrollTrigger })
       .to(rect.current, {
-        duration: 0.3,
-        ease: 'power1.inOut',
+        duration: slideInDuration,
+        ease: slideInEase,
+        delay: slideInDelay,
         x: 0,
         y: 0,
         z: 0,
@@ -26,20 +46,31 @@ export const SlideInText01 = (props: Props) => {
         opacity: 1,
       })
       .to(rect.current, {
-        duration: 0.3,
-        ease: 'power1.inOut',
+        duration: slideOutDuration,
+        ease: slideOutEase,
+        delay: slideOutDelay,
         x: '-101%',
         y: 0,
         z: 0,
       })
-  }, [word, rect])
+  }, [
+    word,
+    rect,
+    slideInDuration,
+    slideInEase,
+    slideInDelay,
+    slideOutDuration,
+    slideOutEase,
+    slideOutDelay,
+    scrollTrigger,
+  ])
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.word} ref={word}>
+    <span className={styles.wrap}>
+      <span className={styles.word} style={{ backgroundColor, color }} ref={word}>
         {props.children}
-      </div>
-      <div className={styles.rect} ref={rect} />
-    </div>
+      </span>
+      <span className={styles.rect} style={{ backgroundColor, color }} ref={rect} />
+    </span>
   )
 }

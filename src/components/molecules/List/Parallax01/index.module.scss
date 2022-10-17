@@ -1,0 +1,30 @@
+@use '../../../../styles/functions/index' as f;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  row-gap: 80px;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 0;
+}
+
+.item {
+  position: relative;
+  width: 30%;
+
+  &:nth-of-type(3n - 1) {
+    margin-top: 100px;
+  }
+}
+
+.rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+}
