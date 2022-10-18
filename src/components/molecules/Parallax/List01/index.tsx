@@ -2,7 +2,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import { createRef, useEffect, useRef } from 'react'
+import { createRef, useLayoutEffect, useRef } from 'react'
 
 import { Image } from '../../../../types/Image'
 import styles from './index.module.scss'
@@ -15,7 +15,7 @@ export const List01 = ({ images, ...props }: Props) => {
   const rectRefs = useRef(images.map(() => createRef<HTMLLIElement>()))
   const itemRefs = useRef(images.map(() => createRef<HTMLLIElement>()))
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
     rectRefs.current.forEach((el, index) => {
