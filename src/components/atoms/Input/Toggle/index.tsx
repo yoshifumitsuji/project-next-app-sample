@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import styles from './index.module.scss'
 
 type Props = {
@@ -5,13 +7,13 @@ type Props = {
   onChange: () => void
 }
 
-export const Toggle = (props: Props) => {
+export const Toggle = forwardRef<HTMLDivElement, Props>(function Toggle(props, ref) {
   return (
-    <div className={styles.toggle} onClick={props.onChange}>
+    <div className={styles.toggle} onClick={props.onChange} ref={ref}>
       <div className={styles.line}>
         <div className={`${styles.indicator} ${props.active && styles.active}`} />
       </div>
-      <button className={`${styles.knob} ${props.active && styles.active}`} />
+      <div className={`${styles.knob} ${props.active && styles.active}`} />
     </div>
   )
-}
+})
