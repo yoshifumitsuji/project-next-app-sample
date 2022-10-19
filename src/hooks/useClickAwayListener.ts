@@ -7,7 +7,6 @@ export const useClickAwayListener = <T extends HTMLElement>(
 ) => {
   // TODO: I want to delete the event state ...
   const [event, setEvent] = useState(false)
-  const [clickAway, setClickAway] = useState(false)
 
   const handleClickAway = useCallback(
     (event: any) => {
@@ -32,6 +31,4 @@ export const useClickAwayListener = <T extends HTMLElement>(
       document.removeEventListener('touchstart', handleClickAway)
     }
   }, [event, handleClickAway])
-
-  return { clickAway }
 }

@@ -1,24 +1,21 @@
-import { useCallback, useRef } from 'react'
-import { useRecoilState } from 'recoil'
-
-import { ModalType, ModalVisibility } from 'src/states/modal'
+import { useCallback, useRef, useState } from 'react'
 
 import { useClickAwayListener } from './useClickAwayListener'
 import { useScrollLock } from './useScrollLock'
 
-export const useModal = (modalType: ModalType) => {
+export const useFloatingContent = () => {
   const ref = useRef<HTMLDivElement>(null)
-  const [open, setOpen] = useRecoilState(ModalVisibility)
+  const [open, setOpen] = useState(false)
 
   const handleOpen = useCallback(() => setOpen(true), [setOpen])
   const handleClose = useCallback(() => setOpen(false), [setOpen])
-  const { clickAway } = useClickAwayListener<HTMLDivElement>(ref, open, handleClose)
 
   useScrollLock(open)
+  useClickAwayListener<HTMLDivElement>(ref, open, handleClose)
 
   return {
-    open,
     ref,
+    open,
     handleOpen,
     handleClose,
   }

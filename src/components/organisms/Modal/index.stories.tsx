@@ -1,8 +1,8 @@
-import { action } from '@storybook/addon-actions'
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { ModalButton } from 'src/components/atoms/ModalButton'
+import { ModalButton } from 'src/components/atoms/Button/ModalButton'
 import { Modal } from 'src/components/organisms/Modal'
+import { useFloatingContent } from 'src/hooks/useFloatingContent'
 
 export default {
   component: Modal,
@@ -14,26 +14,17 @@ export default {
       </div>
     ),
   ],
-  render: (args) => (
-    <>
-      <div style={{ position: 'fixed', top: '0', right: '0' }}>
-        <ModalButton />
-      </div>
-      <Modal {...args} />
-    </>
-  ),
 } as ComponentMeta<typeof Modal>
 
-export const Close: ComponentStoryObj<typeof Modal> = {
-  args: {
-    open: false,
-    onClose: action('onClose'),
-  },
-}
+export const Default: ComponentStory<typeof Modal> = () => {
+  const { open, ref, handleOpen, handleClose } = useFloatingContent()
 
-export const Open: ComponentStoryObj<typeof Modal> = {
-  args: {
-    ...Close.args,
-    open: true,
-  },
+  return (
+    <>
+      <div style={{ position: 'fixed', top: '0', right: '0' }}>
+        <ModalButton onClick={handleOpen} />
+      </div>
+      <Modal ref={ref} open={open} onClose={handleClose} />
+    </>
+  )
 }
