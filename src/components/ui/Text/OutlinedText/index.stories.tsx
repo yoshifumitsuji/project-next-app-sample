@@ -6,7 +6,7 @@ export default {
   component: OutlinedText,
   decorators: [
     (Story) => (
-      <div style={{ height: '300vh', background: 'linear-gradient(blue, pink)' }}>
+      <div style={{ fontSize: '4rem', background: 'linear-gradient(blue, pink)' }}>
         <Story />
       </div>
     ),

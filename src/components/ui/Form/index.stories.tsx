@@ -11,4 +11,4 @@ export default {
   },
 } as ComponentMeta<typeof Form>
 
-export const Close: ComponentStoryObj<typeof Form> = {}
+export const Default: ComponentStoryObj<typeof Form> = {}

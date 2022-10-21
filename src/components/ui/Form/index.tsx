@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import { Toggle } from 'src/components/atoms/Input/Toggle'
+import { Toggle } from 'src/components/ui/Input/Toggle'
 
 import styles from './index.module.scss'
 

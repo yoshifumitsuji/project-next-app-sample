@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions'
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 
-import { ModalButton } from 'src/components/atoms/Button/ModalButton'
+import { ModalButton } from 'src/components/ui/Button/ModalButton'
 
 export default {
   component: ModalButton,

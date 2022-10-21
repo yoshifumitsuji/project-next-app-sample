@@ -1,8 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { ModalButton } from 'src/components/atoms/Button/ModalButton'
-import { Modal } from 'src/components/organisms/Modal'
 import { useFloatingContent } from 'src/hooks/useFloatingContent'
+
+import { ModalButton } from '../Button/ModalButton'
+
+import { Modal } from '.'
 
 export default {
   component: Modal,
