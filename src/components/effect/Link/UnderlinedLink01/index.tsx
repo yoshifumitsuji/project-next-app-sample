@@ -1,4 +1,4 @@
-import { Link } from '../Link'
+import { Link } from '../../../ui/Link'
 import styles from './index.module.scss'
 
 type Props = {
