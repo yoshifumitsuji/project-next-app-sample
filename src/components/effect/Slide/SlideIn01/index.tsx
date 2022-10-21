@@ -5,7 +5,8 @@ import styles from './index.module.scss'
 
 export type SlideInProps = {
   color?: string
-  backgroundColor?: string
+  itemBackgroundColor?: string
+  rectBackgroundColor?: string
   slideInDuration?: number
   slideInEase?: string
   slideInDelay?: number
@@ -18,7 +19,8 @@ export type SlideInProps = {
 
 export const SlideIn = ({
   color = '#fff',
-  backgroundColor = '#000',
+  itemBackgroundColor = '#000',
+  rectBackgroundColor = '#000',
   slideInDuration = 0.3,
   slideInEase = 'power1.inOut',
   slideInDelay = 0,
@@ -34,6 +36,14 @@ export const SlideIn = ({
   useEffect(() => {
     gsap
       .timeline({ scrollTrigger })
+      .set(rect.current, {
+        x: '-101%',
+        y: 0,
+        z: 0,
+      })
+      .set(item.current, {
+        opacity: 0,
+      })
       .to(rect.current, {
         duration: slideInDuration,
         ease: slideInEase,
@@ -67,10 +77,10 @@ export const SlideIn = ({
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.item} style={{ backgroundColor, color }} ref={item}>
+      <div className={styles.item} style={{ backgroundColor: itemBackgroundColor, color }} ref={item}>
         {props.children}
       </div>
-      <div className={styles.rect} style={{ backgroundColor, color }} ref={rect} />
+      <div className={styles.rect} style={{ backgroundColor: rectBackgroundColor, color }} ref={rect} />
     </div>
   )
 }

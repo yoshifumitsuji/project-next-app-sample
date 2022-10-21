@@ -6,7 +6,8 @@ type Props = {
 
 export const SlideInText01 = ({
   color = '#fff',
-  backgroundColor = '#000',
+  itemBackgroundColor = '#000',
+  rectBackgroundColor = '#000',
   slideInDuration = 0.3,
   slideInEase = 'power1.inOut',
   slideInDelay = 0,

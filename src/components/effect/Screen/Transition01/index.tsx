@@ -1,17 +1,14 @@
-import { useRef, useEffect } from 'react'
-
+import { SlideInProps, SlideIn } from '../../Slide/SlideIn01'
 import styles from './index.module.scss'
 
 type Props = {
-  children?: React.ReactNode
-}
+  children: string
+} & SlideInProps
 
-export const Transition01 = (props: Props) => {
-  const initialized = useRef(false)
-
-  useEffect(() => {
-    initialized.current = true
-  }, [])
-
-  return <div className={styles.transition}>{props.children}</div>
+export const SlideInText01 = ({ children, ...props }: Props) => {
+  return (
+    <SlideIn {...props}>
+      <div className={styles.content}>INNER CONTENT</div>
+    </SlideIn>
+  )
 }
