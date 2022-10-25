@@ -14,6 +14,9 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'src/styles')],
     additionalData: `@use "env.${process.env.NODE_ENV}.scss" as environment;`,
   },
+  images: {
+    domains: ['images.unsplash.com'],
+  },
 }
 
 module.exports = nextConfig

@@ -55,3 +55,10 @@ export const GSAP_EASING = [
   'sine.out',
   'sine.inOut',
 ]
+
+export const SAMPLE_IMG_PORTRAIT_01 =
+  'https://images.unsplash.com/photo-1665873183648-649ad63e4df4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+export const SAMPLE_IMG_PORTRAIT_02 =
+  'https://images.unsplash.com/photo-1665925246028-1175f2e51757?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+export const SAMPLE_IMG_PORTRAIT_03 =
+  'https://images.unsplash.com/photo-1665909235925-4ecc57b25249?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=695&q=80'
