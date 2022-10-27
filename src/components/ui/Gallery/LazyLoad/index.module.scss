@@ -1,0 +1,17 @@
+@use '../../../../styles/functions/index' as f;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  row-gap: 80px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 2000px;
+  font-size: 0;
+}
+
+.item {
+  position: relative;
+  width: 45%;
+}
