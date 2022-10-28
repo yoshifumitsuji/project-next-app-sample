@@ -1,0 +1,14 @@
+.wrap {
+  display: block;
+  overflow: hidden;
+}
+
+.wrap img {
+  display: block;
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.wrap:hover img {
+  transform: scale(1.2);
+}
