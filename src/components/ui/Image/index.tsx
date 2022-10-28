@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { useIntersectionObserver } from 'src/hooks/IntersectionObserver'
 import { loadImage } from 'src/libs/image'
@@ -15,30 +15,30 @@ type Props = {
 }
 
 export const Image = (props: Props) => {
-  const [src, setSrc] = useState('')
-  const [show, setShow] = useState(false)
-  const alt = useMemo(() => props.alt || props.src?.split('/')?.pop() || 'No Image', [props])
   const ref = useRef(null)
-  const { active } = useIntersectionObserver(ref, {
-    rootMargin: '100px',
-  })
 
-  const load = useCallback(() => {
+  const [src, setSrc] = useState('')
+  const [enter, setEnter] = useState(false)
+
+  const alt = useMemo(() => props.alt || props.src?.split('/')?.pop() || 'No Image', [props])
+
+  const callback = useCallback(() => {
     loadImage(props.src).then(() => {
       setSrc(props.src)
-      setShow(true)
+      setEnter(true)
       props?.onLoaded?.()
     })
   }, [props])
 
-  useLayoutEffect(() => {
-    if (!active || props.loading !== 'lazy') return
-    load()
-  }, [props, active, load])
+  useIntersectionObserver({
+    ref,
+    option: { rootMargin: '100px' },
+    callback,
+  })
 
   return (
     <img
-      className={`${styles.image} ${show && styles.active}`}
+      className={`${styles.image} ${enter && styles.active}`}
       src={props.loading === 'lazy' ? src : props.src}
       alt={alt}
       width={props.width}

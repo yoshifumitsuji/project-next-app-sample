@@ -1,7 +1,7 @@
 type Props = {
   href: string
   blank?: boolean
-  children: string
+  children: React.ReactNode
 }
 
 export const Link = ({ blank = false, ...props }: Props) => {

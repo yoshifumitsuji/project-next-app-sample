@@ -1,19 +1,30 @@
-import { useEffect, useState } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react'
 
-export const useIntersectionObserver = <T extends HTMLElement>(ref: any, option?: any) => {
-  // const ref = useRef<T>(null)
+type Args<T extends HTMLElement> = {
+  ref: RefObject<T>
+  option?: any
+  callback?: () => void
+}
+export const useIntersectionObserver = <T extends HTMLElement>({ ref, option, callback }: Args<T>) => {
   const [active, setActive] = useState(false)
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
+  const onEnter = useCallback(
+    (entry: IntersectionObserverEntry) => {
+      if (!entry.isIntersecting) return
       setActive(entry.isIntersecting)
-    }, option)
+      callback?.()
+    },
+    [callback]
+  )
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => onEnter(entry), option)
 
     const element = ref.current
     observer.observe(element!)
 
     return () => observer.unobserve(element!)
-  }, [ref, option])
+  }, [ref, option, onEnter])
 
   return { ref, active }
 }

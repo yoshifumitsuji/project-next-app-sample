@@ -8,6 +8,6 @@ type ReactIntersect = {}
 
 export const ReactIntersect = (props: ReactIntersect) => {
   const ref = useRef(null)
-  const { active } = useIntersectionObserver<HTMLDivElement>(ref)
+  const { active } = useIntersectionObserver<HTMLDivElement>({ ref })
   return <div ref={ref} className={`${styles.box} ${active && styles.active}`}></div>
 }
