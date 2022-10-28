@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import styles from './index.module.scss'
 
@@ -11,7 +11,7 @@ type Props = {
 export const Sticky = (props: Props) => {
   const ref = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
     const st = ScrollTrigger.create({
