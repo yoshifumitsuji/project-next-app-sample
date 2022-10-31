@@ -1,0 +1,46 @@
+@keyframes slideTextX100 {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideTextX-100 {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wrap {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.slide {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.wrap.active {
+  animation-name: slideTextX100;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+.wrap.active .slide {
+  animation-name: slideTextX-100;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
