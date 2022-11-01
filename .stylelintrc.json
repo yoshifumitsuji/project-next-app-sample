@@ -9,7 +9,8 @@
   "rules": {
     "string-quotes": "single",
     "keyframes-name-pattern": "[a-z]+",
-    "order/order": ["custom-properties", "declarations"]
+    "order/order": ["custom-properties", "declarations"],
+    "number-max-precision": 5
   },
   "ignoreFiles": ["**/node_modules/**"]
 }

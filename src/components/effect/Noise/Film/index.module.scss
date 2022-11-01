@@ -1,0 +1,254 @@
+:root {
+  --trsn: all 0.5s ease 0s;
+  --black: #000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--black);
+  perspective: 100vmin;
+
+  *,
+  *::before,
+  *::after {
+    position: absolute;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url('https://source.unsplash.com/random/800x600/?mountain') no-repeat center center;
+  background-size: cover;
+  transition: var(--trsn);
+}
+
+.content::before {
+  bottom: 0;
+  width: 100%;
+  padding: 20vmin 2vmin 3vmin;
+  font-family: Arial, Helvetica, serif;
+  font-size: 1.35vmin;
+  font-weight: 500;
+  color: #fffd;
+  text-align: center;
+  letter-spacing: 0.5px;
+  content: 'BG IMAGES FROM UNSPLASH.COM';
+  background: linear-gradient(0deg, black, transparent);
+  border-radius: 1px;
+  word-spacing: 3px;
+}
+
+.content::after {
+  width: 100%;
+  height: 100%;
+  content: '';
+  box-shadow: 0 0 20vmin 0 var(--black) inset, 0 0 3vmin 0.5vmin var(--black) inset, 0 0 1vmin 1vmin var(--black);
+}
+
+.film,
+.effect {
+  width: 100%;
+  height: 100%;
+  filter: blur(0.45px) drop-shadow(0 0 0 #fff1);
+}
+
+.film::after,
+.effect::after {
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  padding-left: 100px;
+  content: '';
+  background: repeating-linear-gradient(90deg, #0002 0 2px, transparent 4px 37vmin);
+  opacity: 0.5;
+  animation: film-scratch 0.45s steps(1) infinite;
+}
+
+.effect::after {
+  left: 30%;
+  animation: effect-scratch 2s infinite;
+}
+
+.grain {
+  width: 100%;
+  height: 100%;
+}
+
+.grain::after {
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  content: '';
+  background-image: repeating-conic-gradient(
+      var(--black) 0%,
+      transparent 0.00003%,
+      transparent 0.0005%,
+      transparent 0.00095%
+    ),
+    repeating-conic-gradient(var(--black) 0%, transparent 0.00005%, transparent 0.00015%, transparent 0.0009%);
+  filter: drop-shadow(0 0 1px black);
+  opacity: 0.25;
+  animation: grain 0.5s steps(1) infinite;
+}
+
+.content.sepia {
+  filter: sepia(0.75);
+}
+
+.content.invert .film {
+  filter: invert(1);
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-1%, -1%);
+  }
+
+  20% {
+    transform: translate(1%, 1%);
+  }
+
+  30% {
+    transform: translate(-2%, -2%);
+  }
+
+  40% {
+    transform: translate(3%, 3%);
+  }
+
+  50% {
+    transform: translate(-3%, -3%);
+  }
+
+  60% {
+    transform: translate(4%, 4%);
+  }
+
+  70% {
+    transform: translate(-4%, -4%);
+  }
+
+  80% {
+    transform: translate(2%, 2%);
+  }
+
+  90% {
+    transform: translate(-3%, -3%);
+  }
+}
+
+@keyframes film-scratch {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(-1%);
+  }
+
+  20% {
+    transform: translateX(1%);
+  }
+
+  30% {
+    opacity: 0.75;
+    transform: translateX(-2%);
+  }
+
+  40% {
+    transform: translateX(3%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(-3%);
+  }
+
+  60% {
+    transform: translateX(8%);
+  }
+
+  70% {
+    transform: translateX(-3%);
+  }
+
+  80% {
+    opacity: 0.25;
+    transform: translateX(10%);
+  }
+
+  90% {
+    transform: translateX(-2%);
+  }
+}
+
+@keyframes effect-scratch {
+  0% {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(-1%);
+  }
+
+  20% {
+    transform: translateX(1%);
+  }
+
+  30% {
+    transform: translateX(-2%);
+  }
+
+  40% {
+    transform: translateX(3%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(-3%);
+  }
+
+  60% {
+    transform: translateX(8%);
+  }
+
+  70% {
+    transform: translateX(-3%);
+  }
+
+  80% {
+    opacity: 0.25;
+    transform: translateX(10%);
+  }
+
+  90% {
+    transform: translateX(20%);
+  }
+
+  100% {
+    transform: translateX(30%);
+  }
+}
