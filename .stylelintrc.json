@@ -10,7 +10,8 @@
     "string-quotes": "single",
     "keyframes-name-pattern": "[a-z]+",
     "order/order": ["custom-properties", "declarations"],
-    "number-max-precision": 5
+    "number-max-precision": 5,
+    "property-no-vendor-prefix": null
   },
   "ignoreFiles": ["**/node_modules/**"]
 }

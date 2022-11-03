@@ -1,0 +1,33 @@
+.iris {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.item01,
+.item02 {
+  position: absolute;
+}
+
+.item02 {
+  transition: all 0.3s ease-in-out;
+  -webkit-mask-image: url('/circle-mask.png');
+  mask-image: url('/circle-mask.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 50% 50%;
+  mask-position: 50% 50%;
+  -webkit-mask-size: 0;
+  mask-size: 0;
+}
+
+.iris:hover .item02 {
+  -webkit-mask-size: 1500px;
+  mask-size: 1500px;
+}
