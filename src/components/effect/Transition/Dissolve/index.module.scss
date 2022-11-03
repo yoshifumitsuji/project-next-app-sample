@@ -1,0 +1,26 @@
+.dissolve {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  background: #000;
+}
+
+.slide01,
+.slide02 {
+  position: absolute;
+}
+
+.slide01 {
+  z-index: 0;
+}
+
+.slide02 {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.slide02:hover {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
