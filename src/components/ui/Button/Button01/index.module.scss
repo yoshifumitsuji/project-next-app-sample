@@ -1,0 +1,110 @@
+a.button,
+a.button:visited {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  padding: 5px 10px 6px;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+
+  /* テキストの影 */
+  text-shadow: 0 -1px 1px rgb(0 0 0 / 50%);
+  text-shadow: 0 -1px 1px rgb(0 0 0 / 100%);
+  cursor: pointer;
+  background: #2981e4 url('/overlay.png') repeat-x;
+  border-bottom: 1px solid rgb(0 0 0 / 50%);
+
+  /* 角丸 */
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+
+  /* ドロップシャドウ */
+  -moz-box-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+  -webkit-box-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+}
+
+a.button:hover {
+  background-color: #2575cf;
+}
+
+a.button span {
+  position: relative;
+  -webkit-animation-name: motionup;
+  animation-name: motionUp;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+}
+
+a.button:hover span {
+  -webkit-animation-name: motionover;
+  animation-name: motionOver;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+}
+
+@keyframes motionUp {
+  50% {
+    top: -30px;
+  }
+
+  50.1% {
+    top: 30px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+@keyframes motionUp {
+  50% {
+    top: -30px;
+  }
+
+  50.1% {
+    top: 30px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes motionOver {
+  50% {
+    top: 30px;
+  }
+
+  50.1% {
+    top: -30px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+@keyframes motionOver {
+  50% {
+    top: 30px;
+  }
+
+  50.1% {
+    top: -30px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
