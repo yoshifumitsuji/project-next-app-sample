@@ -1,0 +1,27 @@
+a.button,
+a.button:visited {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 30px;
+  padding: 5px 10px 6px;
+  line-height: 30px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px rgb(0 0 0 / 50%);
+  cursor: pointer;
+  background: #2981e4 url('/img/overlay.png') repeat-x;
+  border-bottom: 1px solid rgb(0 0 0 / 50%);
+  border-radius: 10px;
+}
+
+a.button:hover {
+  background-color: #2575cf;
+}
+
+a.button:active {
+  top: 1px;
+  background-color: #257599;
+}
