@@ -30,14 +30,11 @@ export const OutlinedText = (props: Props) => {
 
       const min = 0
       const max = scrollbarRect.height - thumbRect.height
-      console.log('max', max)
 
       let thumbY = event.pageY - scrollbarRect.top - thumbRect.height / 2
-      // つまみの座標を稼動範囲に収める
       thumbY = Math.max(min, Math.min(max, thumbY))
       thumbRef.current.style.top = `${thumbY}px`
 
-      // スクロールバーの値を反映
       const contentArea = contentRect.height - containerRect.height
       const rate = thumbY / max
       const targetY = contentArea * rate
@@ -51,16 +48,41 @@ export const OutlinedText = (props: Props) => {
   }, [mouseMoveHandler])
 
   const mouseUpHandler = useCallback(() => {
-    console.log('tewst')
-
     document.removeEventListener('mousemove', mouseMoveHandler)
   }, [mouseMoveHandler])
+
+  const wheelHandler = useCallback(
+    (event: any) => {
+      if (!thumbRef.current || !scrollbarRef.current || !contentRef.current || !containerRef.current) {
+        return
+      }
+
+      const thumbRect = thumbRef.current.getBoundingClientRect()
+      const scrollbarRect = scrollbarRef.current.getBoundingClientRect()
+      const containerRect = containerRef.current.getBoundingClientRect()
+      const contentRect = contentRef.current.getBoundingClientRect()
+
+      const min = 0
+      const max = scrollbarRect.height - thumbRect.height
+
+      let thumbY = thumbRect.top + event.deltaY
+      thumbY = Math.max(min, Math.min(max, thumbY))
+      thumbRef.current.style.top = `${thumbY}px`
+
+      const contentArea = contentRect.height - containerRect.height
+      const rate = thumbY / max
+      const targetY = contentArea * rate
+      contentRef.current.style.top = `${-1 * targetY}px`
+    },
+    [thumbRef, scrollbarRef, contentRef, containerRef]
+  )
 
   useEffect(() => {
     const thumb = thumbRef.current
     if (thumb) {
       thumb.addEventListener('mousedown', mouseDownHandler)
     }
+    containerRef.current?.addEventListener('wheel', wheelHandler)
     document.addEventListener('mouseup', mouseUpHandler)
 
     return () => {
@@ -70,29 +92,7 @@ export const OutlinedText = (props: Props) => {
       document.removeEventListener('mousemove', mouseDownHandler)
       document.removeEventListener('mouseup', mouseUpHandler)
     }
-  }, [thumbRef, mouseDownHandler, mouseUpHandler])
-
-  // function mouseMoveHandler(event) {
-  //   // スクロールバーの可動範囲
-  //   var min = 0
-  //   var max = $('#scroller').height() - $('#thumb').height()
-  //   // つまみの座標
-  //   var thumbY = event.pageY - $('#scroller').position().top - $('#thumb').height() / 2
-  //   // つまみの座標を稼動範囲に収める
-  //   thumbY = Math.max(min, Math.min(max, thumbY))
-  //   $('#thumb').css('top', thumbY) // 適用
-
-  //   // スクロールバーの値を反映
-  //   var contentArea = $('#content').height() - $('#container').height()
-  //   var rate = thumbY / max
-  //   var targetY = contentArea * rate
-  //   $('#content').css('top', -1 * targetY) // 適用
-  // }
-
-  // function mouseUpHandler(event) {
-  //   $(document).unbind('mousemove', mouseMoveHandler)
-  //   $(document).unbind('mouseup', mouseUpHandler)
-  // }
+  }, [thumbRef, mouseDownHandler, mouseUpHandler, mouseMoveHandler, wheelHandler])
 
   return (
     <div className={styles.container} ref={containerRef}>
