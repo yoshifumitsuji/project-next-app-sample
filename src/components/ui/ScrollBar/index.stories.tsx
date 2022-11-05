@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 
-import { OutlinedText } from './index'
+import { ScrollBar } from './index'
 
 export default {
-  component: OutlinedText,
+  component: ScrollBar,
   decorators: [
     (Story) => (
       <div style={{ fontSize: '4rem', background: 'linear-gradient(blue, pink)' }}>
@@ -18,6 +18,6 @@ export default {
     offsetY: 1,
     children: 'Sample',
   },
-} as ComponentMeta<typeof OutlinedText>
+} as ComponentMeta<typeof ScrollBar>
 
-export const Default: ComponentStoryObj<typeof OutlinedText> = {}
+export const Default: ComponentStoryObj<typeof ScrollBar> = {}

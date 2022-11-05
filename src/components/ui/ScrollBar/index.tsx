@@ -10,10 +10,9 @@ type Props = {
   children: string
 }
 
-export const OutlinedText = (props: Props) => {
+export const ScrollBar = (props: Props) => {
   const thumbRef = useRef<HTMLDivElement>(null)
   const scrollbarRef = useRef<HTMLDivElement>(null)
-
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
@@ -78,28 +77,28 @@ export const OutlinedText = (props: Props) => {
   )
 
   useEffect(() => {
-    const thumb = thumbRef.current
-    if (thumb) {
-      thumb.addEventListener('mousedown', mouseDownHandler)
-    }
-    containerRef.current?.addEventListener('wheel', wheelHandler)
+    const scrollbar = scrollbarRef.current
+    const container = containerRef.current
+
+    container?.addEventListener('wheel', wheelHandler)
+    scrollbar?.addEventListener('mousedown', mouseDownHandler)
+    scrollbar?.addEventListener('mousedown', mouseMoveHandler)
     document.addEventListener('mouseup', mouseUpHandler)
 
     return () => {
-      if (thumb) {
-        thumb.removeEventListener('mousedown', mouseDownHandler)
-      }
+      scrollbar?.removeEventListener('mousedown', mouseDownHandler)
+      container?.addEventListener('wheel', wheelHandler)
       document.removeEventListener('mousemove', mouseDownHandler)
       document.removeEventListener('mouseup', mouseUpHandler)
     }
-  }, [thumbRef, mouseDownHandler, mouseUpHandler, mouseMoveHandler, wheelHandler])
+  }, [scrollbarRef, containerRef, mouseDownHandler, mouseUpHandler, mouseMoveHandler, wheelHandler])
 
   return (
     <div className={styles.container} ref={containerRef}>
       <div className={styles.content} ref={contentRef}>
         <img src='/img/thumbnails.jpg' alt='thumbnails' />
       </div>
-      <div className={styles.scroller} ref={scrollbarRef}>
+      <div className={styles.scrollbar} ref={scrollbarRef}>
         <div className={styles.thumb} ref={thumbRef}></div>
       </div>
     </div>
