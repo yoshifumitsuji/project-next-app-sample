@@ -11,10 +11,22 @@ type Props = {
 }
 
 export const ScrollBar = (props: Props) => {
+  const currentValue = useRef(0)
+  const targetValue = useRef(0)
+  const thumbTo = useRef(0)
+  const thumbNow = useRef(0)
   const thumbRef = useRef<HTMLDivElement>(null)
   const scrollbarRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+
+  const tick = useCallback(() => {
+    if (!thumbRef.current || !contentRef.current) {
+      return
+    }
+    currentValue.current += (targetValue.current - currentValue.current) * 0.1
+    contentRef.current.style.top = `${-1 * currentValue.current}px`
+  }, [])
 
   const mouseMoveHandler = useCallback(
     (event: any) => {
@@ -32,12 +44,12 @@ export const ScrollBar = (props: Props) => {
 
       let thumbY = event.pageY - scrollbarRect.top - thumbRect.height / 2
       thumbY = Math.max(min, Math.min(max, thumbY))
+      thumbTo.current = thumbY
       thumbRef.current.style.top = `${thumbY}px`
 
       const contentArea = contentRect.height - containerRect.height
       const rate = thumbY / max
-      const targetY = contentArea * rate
-      contentRef.current.style.top = `${-1 * targetY}px`
+      targetValue.current = contentArea * rate
     },
     [thumbRef, scrollbarRef, contentRef, containerRef]
   )
@@ -70,8 +82,7 @@ export const ScrollBar = (props: Props) => {
 
       const contentArea = contentRect.height - containerRect.height
       const rate = thumbY / max
-      const targetY = contentArea * rate
-      contentRef.current.style.top = `${-1 * targetY}px`
+      targetValue.current = contentArea * rate
     },
     [thumbRef, scrollbarRef, contentRef, containerRef]
   )
@@ -85,13 +96,15 @@ export const ScrollBar = (props: Props) => {
     scrollbar?.addEventListener('mousedown', mouseMoveHandler)
     document.addEventListener('mouseup', mouseUpHandler)
 
+    setInterval(tick, 1000 / 60)
+
     return () => {
       scrollbar?.removeEventListener('mousedown', mouseDownHandler)
       container?.addEventListener('wheel', wheelHandler)
       document.removeEventListener('mousemove', mouseDownHandler)
       document.removeEventListener('mouseup', mouseUpHandler)
     }
-  }, [scrollbarRef, containerRef, mouseDownHandler, mouseUpHandler, mouseMoveHandler, wheelHandler])
+  }, [scrollbarRef, containerRef, mouseDownHandler, mouseUpHandler, mouseMoveHandler, wheelHandler, tick])
 
   return (
     <div className={styles.container} ref={containerRef}>
